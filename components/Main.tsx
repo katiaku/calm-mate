@@ -2,11 +2,11 @@ import { View, Text, ImageBackground, SafeAreaView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { StatusBar } from "expo-status-bar";
 import beachImage from "../assets/meditation-images/beach.jpg";
-import CustomButton from "../components/CustomButton";
+import CustomButton from "./CustomButton";
 
-const App = () => {
+const Main = () => {
   return (
-    <View className="flex-1">
+    <View className="flex-1 w-full">
       <ImageBackground
         source={beachImage}
         resizeMode="cover"
@@ -14,19 +14,19 @@ const App = () => {
       >
         <LinearGradient
           className="flex-1"
-          colors={["rgba(0, 0, 0, 0.4", "rgba(0, 0, 0, 0.8)"]}
+          colors={["rgba(0, 0, 0, 0.3)", "rgba(0, 0, 0, 0.8)"]}
         >
-          <SafeAreaView className="flex-1 mx-5 my-12 justify-between">
-            <View>
-              <Text className="text-center text-white font-bold text-4xl">
-                Hi, I'm your CalmMate!
+          <SafeAreaView className="flex-1 my-12 justify-around items-center">
+            <View className="flex-1 items-center justify-center gap-4">
+              <Text className="text-slate-100 font-bold text-3xl">
+                Welcome to CalmMate
               </Text>
-              <Text className="text-center text-white size-2xl mt-3">
-                It's meditation time!
+              <Text className=" text-slate-100 text-xl font-semibold mt-3">
+                It's Meditation Time!
               </Text>
             </View>
 
-            <View>
+            <View className="w-full px-4">
               <CustomButton
                 onPress={() => console.log("pressed")}
                 title="Get Started"
@@ -40,4 +40,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Main;
