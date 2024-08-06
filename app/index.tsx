@@ -2,10 +2,10 @@ import { View, Text, ImageBackground, SafeAreaView } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { useRouter } from "expo-router";
 import beachImage from "../assets/meditation-images/beach.jpg";
-import CustomButton from "./CustomButton";
-import AppGradient from "./AppGradient";
+import CustomButton from "../components/CustomButton";
+import AppGradient from "../components/AppGradient";
 
-const Main = () => {
+const App = () => {
   const router = useRouter();
 
   return (
@@ -40,4 +40,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default App;

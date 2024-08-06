@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 function NatureMeditate() {
   return (
     <View>
-      <Text></Text>
+      <Text>Nature Meditate</Text>
     </View>
   );
 }
