@@ -11,11 +11,8 @@ function NatureMeditate() {
     <View className="flex-1">
       <AppGradient colors={["#161b2e", "#0a4d4a", "#766e67"]}>
         <View className="mb-6 px-4">
-          <Text className="text-slate-100 mb-3 font-bold text-4xl text-left">
-            Welcome Mate
-          </Text>
-          <Text className="text-indigo-100 text-xl font-medium">
-            Start your practice today
+          <Text className="text-slate-100 mb-2 pt-4 font-bold text-3xl text-center">
+            Try An Experience
           </Text>
         </View>
 
@@ -28,7 +25,7 @@ function NatureMeditate() {
             renderItem={({ item }) => (
               <Pressable
                 onPress={() => router.push(`/meditate/${item.id}`)}
-                className="h-48 my-3 rounded-md overflow-hidden"
+                className="h-48 my-3 rounded-lg overflow-hidden"
               >
                 <ImageBackground
                   source={MEDITATION_IMAGES[item.id - 1]}
@@ -39,7 +36,7 @@ function NatureMeditate() {
                     colors={["transparent", "rgba(0, 0, 0, 0.8)"]}
                     className="flex-1 justify-center items-center"
                   >
-                    <Text className="text-slate-100 text-3xl font-bold text-center">
+                    <Text className="text-slate-100 text-2xl font-bold text-center">
                       {item.title}
                     </Text>
                   </LinearGradient>

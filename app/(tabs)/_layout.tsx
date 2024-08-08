@@ -1,5 +1,4 @@
 import { Tabs } from "expo-router";
-import Colors from "@/constants/Colors";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Entypo from "@expo/vector-icons/Entypo";
 
@@ -8,7 +7,10 @@ const TabsLayout = () => {
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: Colors.sloth,
+        tabBarActiveTintColor: "black",
+        tabBarStyle: {
+          backgroundColor: "#FFE668",
+        },
       }}
     >
       <Tabs.Screen

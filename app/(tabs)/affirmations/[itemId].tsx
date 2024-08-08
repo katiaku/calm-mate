@@ -58,7 +58,7 @@ const AffirmationPractice = () => {
                 {sentences?.map((sentence, idx) => (
                   <Text
                     key={idx}
-                    className="text-slate-100 text-3xl mb-12 font-semibold leading-10 px-6"
+                    className="text-slate-100 text-2xl mt-12 font-semibold leading-10 px-6"
                   >
                     <AntDesign name="star" size={24} color="white" />
                     {` ${sentence}.`}
