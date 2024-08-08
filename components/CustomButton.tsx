@@ -16,7 +16,7 @@ const CustomButton = ({
   return (
     <TouchableOpacity
       activeOpacity={0.7}
-      className={`bg-slate-100 border-2 border-slate-900 rounded-full min-h-[52px] justify-center items-center ${containerStyles}`}
+      className={`bg-[#FFE668] border-2 border-slate-900 rounded-full min-h-[52px] justify-center items-center ${containerStyles}`}
       onPress={onPress}
     >
       <Text className={`font-semibold text-lg ${textStyles}`}>{title}</Text>

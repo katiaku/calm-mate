@@ -83,11 +83,11 @@ const Meditate = () => {
             onPress={() => router.back()}
             className="absolute top-16 left-6 z-10"
           >
-            <AntDesign name="leftcircle" size={50} color="white" />
+            <AntDesign name="leftcircle" size={36} color="#FFE668" />
           </Pressable>
 
           <View className="flex-1 justify-center">
-            <View className="mx-auto bg-slate-200 rounded-full w-44 h-44 justify-center items-center">
+            <View className="mx-auto bg-[#FFE668] rounded-full w-44 h-44 justify-center items-center">
               <Text className="text-4xl text-blue-800 font-rmono">
                 {formattedTimeMinutes}:{formattedTimeSeconds}
               </Text>
