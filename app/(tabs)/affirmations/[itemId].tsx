@@ -1,5 +1,3 @@
-import AppGradient from "@/components/AppGradient";
-import AFFIRMATION_GALLERY from "@/constants/affirmation-gallery";
 import { GalleryPreviewData } from "@/constants/models/AffirmationCategory";
 import { useLocalSearchParams, router } from "expo-router";
 import { useEffect, useState } from "react";
@@ -11,12 +9,12 @@ import {
   ScrollView,
 } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import AppGradient from "@/components/AppGradient";
+import AFFIRMATION_GALLERY from "@/constants/affirmation-gallery";
 
 const AffirmationPractice = () => {
   const { itemId } = useLocalSearchParams();
-
   const [affirmation, setAffirmation] = useState<GalleryPreviewData>();
-
   const [sentences, setSentences] = useState<string[]>([]);
 
   useEffect(() => {
@@ -49,7 +47,7 @@ const AffirmationPractice = () => {
             onPress={() => router.back()}
             className="absolute top-16 left-6 z-10"
           >
-            <AntDesign name="leftcircle" size={50} color="white" />
+            <AntDesign name="leftcircle" size={36} color="#FFE668" />
           </Pressable>
 
           <ScrollView className="mt-20" showsVerticalScrollIndicator={false}>
@@ -58,9 +56,9 @@ const AffirmationPractice = () => {
                 {sentences?.map((sentence, idx) => (
                   <Text
                     key={idx}
-                    className="text-slate-100 text-3xl mb-12 font-semibold leading-10 px-6"
+                    className="text-slate-100 text-2xl mt-12 font-semibold leading-10 px-6"
                   >
-                    <AntDesign name="star" size={24} color="white" />
+                    <AntDesign name="star" size={20} color="#E2E1EF" />
                     {` ${sentence}.`}
                   </Text>
                 ))}

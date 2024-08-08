@@ -21,11 +21,11 @@ const AffirmationsGallery = ({ title, previews }: AffirmationsGalleryProps) => {
           renderItem={({ item }) => (
             <Link href={`/affirmations/${item.id}`} asChild>
               <Pressable>
-                <View className="h-36 w-32 rounded-md mr-4">
+                <View className="h-36 w-32 rounded-xl mr-3">
                   <Image
                     source={item.image}
                     resizeMode="cover"
-                    className="w-full h-full"
+                    className="w-full h-full rounded-xl"
                   />
                 </View>
               </Pressable>

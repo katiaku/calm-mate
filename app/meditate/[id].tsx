@@ -1,17 +1,21 @@
 import { View, ImageBackground, Pressable, Text } from "react-native";
-import MEDITATION_IMAGES from "@/constants/meditation-images";
-import AppGradient from "@/components/AppGradient";
+import { useContext, useEffect, useState } from "react";
+import { Audio } from "expo-av";
 import { router, useLocalSearchParams } from "expo-router";
+import AppGradient from "@/components/AppGradient";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import CustomButton from "@/components/CustomButton";
-import { useEffect, useState } from "react";
+import MEDITATION_IMAGES from "@/constants/meditation-images";
+import { MEDITATION_DATA, AUDIO_FILES } from "@/constants/MeditationData";
+import { TimerContext } from "@/context/TimerContext";
 
 const Meditate = () => {
   const { id } = useLocalSearchParams();
-
-  const [secondsRemaining, setSecondsRemaining] = useState(10);
-
+  const { duration: secondsRemaining, setDuration } = useContext(TimerContext);
+  // const [secondsRemaining, setSecondsRemaining] = useState(10);
   const [isMeditating, setMeditating] = useState(false);
+  const [audioSound, setSound] = useState<Audio.Sound>();
+  const [isPlayingAudio, setPlayingAudio] = useState(false);
 
   useEffect(() => {
     let timerId: NodeJS.Timeout;
@@ -23,7 +27,7 @@ const Meditate = () => {
 
     if (isMeditating) {
       timerId = setTimeout(() => {
-        setSecondsRemaining(secondsRemaining - 1);
+        setDuration(secondsRemaining - 1);
       }, 1000);
     }
 
@@ -31,6 +35,43 @@ const Meditate = () => {
       clearTimeout(timerId);
     };
   }, [secondsRemaining, isMeditating]);
+
+  useEffect(() => {
+    return () => {
+      setDuration(10);
+      audioSound?.unloadAsync();
+    };
+  }, [audioSound]);
+
+  const toggleMeditationSessionStatus = async () => {
+    if (secondsRemaining === 0) setDuration(10);
+    setMeditating(!isMeditating);
+    await toggleSound();
+  };
+
+  const toggleSound = async () => {
+    const sound = audioSound ? audioSound : await initializeSound();
+    const status = await sound?.getStatusAsync();
+    if (status?.isLoaded && !isPlayingAudio) {
+      await sound.playAsync();
+      setPlayingAudio(true);
+    } else {
+      await sound.pauseAsync();
+      setPlayingAudio(false);
+    }
+  };
+
+  const initializeSound = async () => {
+    const audioFileName = MEDITATION_DATA[Number(id) - 1].audio;
+    const { sound } = await Audio.Sound.createAsync(AUDIO_FILES[audioFileName]);
+    setSound(sound);
+    return sound;
+  };
+
+  const handleAdjustDuration = () => {
+    if (isMeditating) toggleMeditationSessionStatus();
+    router.push("/(modal)/adjust-meditation-duration");
+  };
 
   const formattedTimeMinutes = String(
     Math.floor(secondsRemaining / 60),
@@ -50,19 +91,26 @@ const Meditate = () => {
             onPress={() => router.back()}
             className="absolute top-16 left-6 z-10"
           >
-            <AntDesign name="leftcircle" size={50} color="white" />
+            <AntDesign name="leftcircle" size={36} color="#FFE668" />
           </Pressable>
 
           <View className="flex-1 justify-center">
-            <View className="mx-auto bg-slate-200 rounded-full w-44 h-44 justify-center items-center">
-              <Text className="text-4xl text-blue-800 font-rmono">
+            <View className="mx-auto bg-[#FFE668] border-2 border-black rounded-full w-44 h-44 justify-center items-center">
+              <Text className="text-4xl text-black font-rmono">
                 {formattedTimeMinutes}:{formattedTimeSeconds}
               </Text>
             </View>
           </View>
 
-          <View className="mb-5">
-            <CustomButton title="Start" onPress={() => setMeditating(true)} />
+          <View className="mb-5 px-4">
+            <CustomButton
+              title="Adjust Duration"
+              onPress={handleAdjustDuration}
+            />
+            <CustomButton
+              title={isMeditating ? "Stop" : "Start"}
+              onPress={toggleMeditationSessionStatus}
+            />
           </View>
         </AppGradient>
       </ImageBackground>
