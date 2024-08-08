@@ -1,10 +1,8 @@
 import { View, Text, ImageBackground, SafeAreaView } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { useRouter } from "expo-router";
-// import beachImage from "@/assets/meditation-images/beach.jpg";
 import monkeyImage from "@/assets/cute-monkey-meditation.jpg";
 import CustomButton from "@/components/CustomButton";
-import AppGradient from "@/components/AppGradient";
 
 const App = () => {
   const router = useRouter();

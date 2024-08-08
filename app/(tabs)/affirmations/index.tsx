@@ -1,7 +1,7 @@
+import { View, Text, ScrollView } from "react-native";
 import AffirmationsGallery from "@/components/AffirmationsGallery";
 import AppGradient from "@/components/AppGradient";
 import AFFIRMATION_GALLERY from "@/constants/affirmation-gallery";
-import { View, Text, ScrollView } from "react-native";
 
 const Affirmations = () => {
   return (

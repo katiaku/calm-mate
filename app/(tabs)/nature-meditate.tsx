@@ -1,10 +1,10 @@
-import AppGradient from "@/components/AppGradient";
 import { StatusBar } from "expo-status-bar";
 import { View, Text, FlatList, Pressable, ImageBackground } from "react-native";
-import { MEDITATION_DATA } from "@/constants/MeditationData";
-import MEDITATION_IMAGES from "@/constants/meditation-images";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
+import AppGradient from "@/components/AppGradient";
+import { MEDITATION_DATA } from "@/constants/MeditationData";
+import MEDITATION_IMAGES from "@/constants/meditation-images";
 
 function NatureMeditate() {
   return (
